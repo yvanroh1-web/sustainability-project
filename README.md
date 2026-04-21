@@ -168,3 +168,4 @@ Quantitative portfolio optimisation with ESG constraints: minimum-variance
 allocation, carbon footprint reduction, and net-zero investment strategies.
 
 **Topics:** `finance` · `sustainability` · `portfolio-optimization` · `quantitative-finance` · `esg` · `cvxpy`
+
