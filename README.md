@@ -54,6 +54,17 @@ Three decarbonisation strategies built on top of Part I:
 
 ---
 
+## How to run
+
+1. Install dependencies:
+   pip install -r requirements.txt
+
+2. Run Part I notebook:
+   notebooks/01_part1_portfolio_allocation.ipynb
+
+3. Run Part II notebook:
+   notebooks/02_part2_carbon_portfolio.ipynb
+
 ## Quick Start
 
 ### Option A — Conda (recommended)
@@ -164,4 +175,10 @@ Quantitative portfolio optimisation with ESG constraints: minimum-variance
 allocation, carbon footprint reduction, and net-zero investment strategies.
 
 **Topics:** `finance` · `sustainability` · `portfolio-optimization` · `quantitative-finance` · `esg` · `cvxpy`
+
+## Key Results
+
+- ESG constraints significantly reduce portfolio carbon footprint
+- Moderate impact on risk-adjusted performance (Sharpe ratio)
+- Trade-off between sustainability and efficiency highlighted
 
