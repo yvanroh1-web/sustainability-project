@@ -1,3 +1,5 @@
+This project implements a sustainability-aware portfolio allocation framework, combining modern portfolio theory with ESG constraints and carbon reduction strategies.
+
 # SAAM — Portfolio Allocation with a Carbon Objective
 
 > **Sustainability Aware Asset Management** · HEC/EPFL · Spring 2026  
