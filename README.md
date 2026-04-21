@@ -32,10 +32,10 @@ Three decarbonisation strategies built on top of Part I:
 ├── data/
 │   ├── raw/                     # Original Datastream Excel files (git-ignored)
 │   └── processed/               # Cleaned intermediate data (git-ignored)
-├── docs/
-│   ├── instructions/            # Project brief PDF
-│   ├── report/                  # Report draft
-│   └── templates/               # Submission templates
+figures/       # plots and visual outputs
+notebooks/     # Jupyter notebooks for analysis
+results/       # output tables and figures (Part II)
+src/           # reusable Python modules
 ├── figures/                     # Key figures committed to the repo
 ├── notebooks/
 │   ├── 01_part1_portfolio_allocation.ipynb   # Part I — full pipeline
