@@ -1,0 +1,18 @@
+{
+  "_comment": "Copy this file to config/paths.json and adjust paths to your local data folder. paths.json is git-ignored.",
+  "data_dir": "./data/raw/extracted/",
+  "output_dir": "./output/",
+  "figures_dir": "./results/figures/",
+  "tables_dir": "./results/tables/",
+  "files": {
+    "static":    "Static_2025.xlsx",
+    "ri_m":      "DS_RI_T_USD_M_2025.xlsx",
+    "mv_m":      "DS_MV_T_USD_M_2025.xlsx",
+    "mv_y":      "DS_MV_T_USD_Y_2025.xlsx",
+    "co2_s1":    "DS_CO2_SCOPE_1_Y_2025.xlsx",
+    "co2_s2":    "DS_CO2_SCOPE_2_Y_2025.xlsx",
+    "rev":       "DS_REV_Y_2025.xlsx",
+    "rf":        "Risk_Free_Rate_2025.xlsx",
+    "template":  "Template_for_Part_I-SAAM.xlsx"
+  }
+}

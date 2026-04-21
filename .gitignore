@@ -1,0 +1,44 @@
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ── Virtual environments ───────────────────────────────────
+.venv/
+venv/
+env/
+.env
+
+# ── Jupyter ────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Data files (large raw Excel files — not committed) ─────
+data/raw/*.xlsx
+data/raw/*.zip
+data/raw/extracted/
+data/processed/
+
+# ── Output artefacts (reproducible from notebook) ──────────
+output/
+results/tables/*.csv
+results/figures/*.png
+results/figures/*.pdf
+
+# ── OS & editors ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Secrets / local config ─────────────────────────────────
+config/paths.json
+*.env

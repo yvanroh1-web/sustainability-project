@@ -1,0 +1,165 @@
+# SAAM — Portfolio Allocation with a Carbon Objective
+
+> **Sustainability Aware Asset Management** · HEC/EPFL · Spring 2026  
+> Region: **North America & Europe** · Carbon scope: **Scope 1 & 2**  
+> Out-of-sample evaluation period: **2014–2025**
+
+---
+
+## Overview
+
+This repository contains the full implementation of a climate-aware quantitative
+asset management project.  The project is split into two parts:
+
+**Part I — Standard Portfolio Allocation**  
+Minimum-variance and value-weighted portfolios constructed out-of-sample with
+annual rebalancing over 2014–2025.
+
+**Part II — Carbon-Constrained Portfolio Allocation** *(in progress)*  
+Three decarbonisation strategies built on top of Part I:
+- MV portfolio with **50% carbon footprint reduction** vs. unconstrained MV
+- Tracking-error minimisation with **50% CF reduction** vs. value-weighted benchmark
+- **Net-zero pathway** with 10% annual CF reduction from the 2013 benchmark level
+
+---
+
+## Repository Structure
+
+```
+.
+├── config/
+│   └── paths.example.json       # Template for local data paths (git-ignored)
+├── data/
+│   ├── raw/                     # Original Datastream Excel files (git-ignored)
+│   └── processed/               # Cleaned intermediate data (git-ignored)
+├── docs/
+│   ├── instructions/            # Project brief PDF
+│   ├── report/                  # Report draft
+│   └── templates/               # Submission templates
+├── figures/                     # Key figures committed to the repo
+├── notebooks/
+│   ├── 01_part1_portfolio_allocation.ipynb   # Part I — full pipeline
+│   └── 02_part2_carbon_portfolio.ipynb       # Part II — carbon strategies
+├── results/
+│   ├── figures/                 # All output figures (reproducible from notebooks)
+│   └── tables/                  # All output CSVs  (reproducible from notebooks)
+├── src/
+│   ├── __init__.py
+│   ├── io_utils.py              # Data loading & cleaning
+│   ├── portfolio_utils.py       # Investment set, covariance, optimisation, stats
+│   ├── carbon_utils.py          # Carbon metrics & constrained optimisation
+│   └── plot_utils.py            # Reusable plotting functions
+├── .gitignore
+├── environment.yml              # Conda environment (recommended)
+├── requirements.txt             # pip dependencies
+└── README.md
+```
+
+---
+
+## Quick Start
+
+### Option A — Conda (recommended)
+
+```bash
+conda env create -f environment.yml
+conda activate saam
+jupyter lab
+```
+
+### Option B — pip
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+jupyter lab
+```
+
+### Data setup
+
+1. Place the raw Datastream Excel files in `data/raw/extracted/`.
+2. Copy `config/paths.example.json` to `config/paths.json` and adjust paths if needed.
+3. Open `notebooks/01_part1_portfolio_allocation.ipynb` and run all cells.
+
+---
+
+## Source Modules
+
+| Module | Responsibility |
+|--------|----------------|
+| `io_utils.py` | `load_ts`, `clean_prices`, `compute_returns`, `ffill_annual`, `filter_region` |
+| `portfolio_utils.py` | Investment set construction, pairwise covariance, MV / VW optimisation and returns, summary stats |
+| `carbon_utils.py` | Carbon intensity, WACI, CF, carbon-constrained QP solvers (MV and TE) |
+| `plot_utils.py` | `plot_cumulative_returns`, `plot_carbon_metric`, `plot_weights_bar` |
+
+---
+
+## Reproducibility
+
+The final submission requires **one notebook** that runs from top to bottom without
+manual intervention, reproducing all report tables and figures.  The current setup
+uses two notebooks (one per part) that will be merged into a single submission
+notebook once Part II is complete.
+
+**No hard-coded local paths** — all paths are resolved via `config/paths.json`
+with a documented fallback.
+
+---
+
+## Part I Results
+
+| Metric | Value-Weighted | Min-Variance |
+|--------|---------------|--------------|
+| Annualised return | — | — |
+| Annualised volatility | — | — |
+| Sharpe ratio | — | — |
+| Cumulative growth (2014–2025) | $3.48 | $1.99 |
+
+*See `results/tables/summary_stats_part1.csv` and `figures/` for full results.*
+
+---
+
+## Part II Roadmap
+
+- [ ] Section 3.1 — WACI and CF of Part I portfolios
+- [ ] Section 3.2 — $P^{(mv)}_{oos}(0.5)$: MV with 50% CF constraint
+- [ ] Section 3.3 — $P^{(vw)}_{oos}(0.5)$: TE minimisation with 50% CF constraint
+- [ ] Section 4.1 — $P^{(vw)}_{oos}(NZ)$: Net-zero pathway
+- [ ] Section 4.2 — Full comparison and discussion
+
+---
+
+## Methodology Notes
+
+**Covariance estimation**  
+Pairwise complete observations are used so that firms with NaN only at the
+beginning of the estimation window (not yet listed) are not discarded.
+Eigenvalue clipping (floor = 1e-8) ensures the matrix is PSD before solving.
+
+**Delisting treatment**  
+When a firm's price series ends permanently (all subsequent values NaN), the
+last return is set to −100% per project instructions.
+
+**Stale-price filter**  
+Firms with more than 50% zero returns over the estimation window are excluded
+to avoid artificially low estimated volatility.
+
+**Carbon constraint feasibility**  
+When the carbon constraint renders the problem infeasible (rare edge case),
+the solver falls back to the unconstrained solution and flags the year.
+
+---
+
+## Use of Large Language Models (LLMs)
+
+*[To be completed in the report — mandatory disclosure per project instructions.]*
+
+---
+
+## About
+
+Quantitative portfolio optimisation with ESG constraints: minimum-variance
+allocation, carbon footprint reduction, and net-zero investment strategies.
+
+**Topics:** `finance` · `sustainability` · `portfolio-optimization` · `quantitative-finance` · `esg` · `cvxpy`
